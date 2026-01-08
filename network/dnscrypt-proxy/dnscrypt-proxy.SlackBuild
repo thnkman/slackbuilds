@@ -28,7 +28,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 set -e
 
 PRGNAM=dnscrypt-proxy
-VERSION=${VERSION:-2.1.5}
+VERSION=${VERSION:-2.1.15}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -104,9 +104,6 @@ install -D -m 0644 $CWD/$PRGNAM.toml $PKG/etc/$PRGNAM/$PRGNAM.toml
 install -D -m 0644 $CWD/README.Slackware $PKG/usr/doc/$PRGNAM-$VERSION/README.Slackware
 install -D -m 0644 $CWD/$PRGNAM.SlackBuild $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 install -D -m 0644 $CWD/rc.$PRGNAM $PKG/etc/rc.d/rc.$PRGNAM
-
-sed -i "s/DNSCRYPT_UID=.*$/DNSCRYPT_UID=$DNSCRYPT_UID/" $CWD/doinst.sh
-sed -i "s/DNSCRYPT_GID=.*$/DNSCRYPT_GID=$DNSCRYPT_GID/" $CWD/doinst.sh
 
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 cat $CWD/slack-desc > $PKG/install/slack-desc
