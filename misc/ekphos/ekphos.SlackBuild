@@ -38,14 +38,11 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-if [ $ARCH == "x86_64" ]; then
-    CARGO=cargo_$ARCH
+CARGO=cargo_$ARCH
 
-elif [ $ARCH == "i586" ]; then
-    CARGO=cargo_$ARCH
-
-else
+if [ $ARCH != "x86_64" ] && [ $ARCH != "i586" ]; then
     echo " Unsupported ARCH: $ARCH"
+    exit 1
 fi
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
